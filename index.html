@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shekinah Okunbo — Quant / ML / SWE</title>
+  <meta name="description" content="Shekinah Okunbo — quantitative research, machine learning, and software engineering. Rigorously-validated trading signals, real-time C++/Python systems, and backtesting infrastructure." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="Shekinah Okunbo — Quant / ML / SWE" />
+  <meta property="og:description" content="Rigorously-validated trading signals, real-time C++/Python systems, and backtesting infrastructure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shekinahokunbo.github.io" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>" />
+
+  <style>
+    :root {
+      --bg:        #0a0e14;
+      --bg-2:      #0f141d;
+      --panel:     #131a24;
+      --panel-2:   #182029;
+      --border:    #232c38;
+      --text:      #e6edf3;
+      --muted:     #8b98a9;
+      --faint:     #5c6773;
+      --accent:    #4ade80;   /* signal green */
+      --accent-2:  #38bdf8;   /* cyan */
+      --accent-3:  #a78bfa;   /* violet */
+      --danger:    #f87171;
+      --maxw:      1080px;
+      --radius:    16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(56,189,248,0.10), transparent 60%),
+        radial-gradient(1100px 650px at 100% 0%, rgba(74,222,128,0.08), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10,14,20,0.72);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 15px; }
+    .brand .dot { color: var(--accent); }
+    .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* ---------- Hero ---------- */
+    header.hero { padding: 96px 0 72px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+      color: var(--accent); background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.22);
+      padding: 6px 12px; border-radius: 100px; margin-bottom: 26px;
+    }
+    .eyebrow .pulse {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(74,222,128,0.6); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    }
+    h1 {
+      font-size: clamp(38px, 6vw, 62px); line-height: 1.04; letter-spacing: -0.03em;
+      font-weight: 800; margin: 0 0 20px;
+    }
+    h1 .grad {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 640px; margin: 0 0 34px; }
+    .lede strong { color: var(--text); font-weight: 600; }
+
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 11px 18px; border-radius: 11px; font-size: 14.5px; font-weight: 600;
+      border: 1px solid var(--border); background: var(--panel); color: var(--text);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: #33404f; background: var(--panel-2); }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), #22c55e); color: #052e14; border-color: transparent; }
+    .btn.primary:hover { filter: brightness(1.05); }
+    .btn svg { width: 17px; height: 17px; }
+
+    /* ---------- Section ---------- */
+    section { padding: 60px 0; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+    .sec-num { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 14px; }
+    h2 { font-size: clamp(24px, 3.5vw, 32px); letter-spacing: -0.02em; margin: 0; font-weight: 700; }
+    .sec-sub { color: var(--muted); margin: 0 0 36px; max-width: 660px; }
+
+    /* ---------- Approach ---------- */
+    .approach { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 800px) { .approach { grid-template-columns: 1fr; } }
+    .pill {
+      background: linear-gradient(180deg, var(--panel), var(--bg-2));
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+    }
+    .pill .ic { font-size: 22px; margin-bottom: 12px; }
+    .pill h3 { margin: 0 0 8px; font-size: 16.5px; }
+    .pill p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+    /* ---------- Projects ---------- */
+    .projects { display: flex; flex-direction: column; gap: 22px; }
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--bg-2));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 30px; transition: border-color .2s ease, transform .2s ease;
+      position: relative; overflow: hidden;
+    }
+    .card:hover { border-color: #34414f; transform: translateY(-3px); }
+    .card::before {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      opacity: .0; transition: opacity .2s ease;
+    }
+    .card:hover::before { opacity: .9; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .card h3 { margin: 0; font-size: 21px; letter-spacing: -0.01em; }
+    .card .sub { color: var(--faint); font-size: 13px; font-family: 'JetBrains Mono', monospace; margin-top: 3px; }
+    .status { font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 5px 11px; border-radius: 100px; white-space: nowrap; }
+    .status.live { color: var(--accent); background: rgba(74,222,128,0.09); border: 1px solid rgba(74,222,128,0.25); }
+    .status.repo { color: var(--accent-2); background: rgba(56,189,248,0.09); border: 1px solid rgba(56,189,248,0.22); }
+    .card p.desc { color: var(--muted); margin: 16px 0 20px; font-size: 15px; max-width: 720px; }
+
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+    .metric { background: var(--panel-2); padding: 15px 16px; }
+    .metric .v { font-family: 'JetBrains Mono', monospace; font-size: 19px; font-weight: 700; }
+    .metric .v.pos { color: var(--accent); }
+    .metric .v.neg { color: var(--danger); }
+    .metric .v.neu { color: var(--accent-2); }
+    .metric .k { color: var(--faint); font-size: 12px; margin-top: 3px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); background: var(--panel-2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 7px; }
+
+    .card-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .card-links a { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--text); }
+    .card-links a svg { width: 16px; height: 16px; }
+    .card-links a:hover { color: var(--accent); }
+    .card-links a.demo:hover { color: var(--accent); }
+
+    /* ---------- Skills ---------- */
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    @media (max-width: 800px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+    .skill-col h4 { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .skill-col ul { list-style: none; margin: 0; padding: 0; }
+    .skill-col li { color: var(--muted); font-size: 14.5px; padding: 3px 0; }
+
+    /* ---------- Contact ---------- */
+    .contact { text-align: center; padding: 84px 0 60px; }
+    .contact h2 { margin-bottom: 14px; }
+    .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 30px; }
+    .contact .cta { justify-content: center; }
+
+    footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--faint); font-size: 13px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    footer .mono { color: var(--faint); }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .pulse { animation: none; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand mono">shekinah<span class="dot">.</span>okunbo</div>
+      <div class="nav-links">
+        <a href="#approach">Approach</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="pulse"></span> Open to Summer 2027 internships — Quant · ML · SWE</span>
+      <h1>Shekinah Okunbo.<br /><span class="grad">Building systems that measure what's real.</span></h1>
+      <p class="lede">
+        I build quantitative and machine-learning systems the way production software should be built —
+        <strong>honest metrics, no look-ahead bias, real transaction costs, tests that catch the traps.</strong>
+        The value isn't a flashy backtest; it's knowing whether an edge is actually there.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          View my work
+        </a>
+        <a class="btn" href="https://github.com/shekinahokunbo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.25.8-.55v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.75.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="mailto:so56@rice.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Email
+        </a>
+        <a class="btn" id="linkedin-btn" href="https://www.linkedin.com/in/shekinahokunbo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" id="resume-btn" href="resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 12v6M9 15l3 3 3-3"/></svg>
+          Résumé
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="approach">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="sec-num">01</span><h2>How I approach the work</h2></div>
+      <p class="sec-sub">Most "stock prediction" projects are quietly broken — they leak future data, "predict" yesterday's price, and report accuracy with no costs or benchmark. I build to avoid every one of those traps. The rigor <em>is</em> the contribution.</p>
+      <div class="approach">
+        <div class="pill">
+          <div class="ic">🔬</div>
+          <h3>Correctness over hype</h3>
+          <p>Look-ahead-free backtests, realistic transaction costs, and honest benchmarks against buy-and-hold. I report null results when the edge isn't real — because that's the truth.</p>
+        </div>
+        <div class="pill">
+          <div class="ic">⚙️</div>
+          <h3>Production discipline</h3>
+          <p>Reproducible environments, single-source-of-truth config, and regression tests that specifically catch data leakage. Research code held to software standards.</p>
+        </div>
+        <div class="pill">
+          <div class="ic">⚡</div>
+          <h3>Systems that ship</h3>
+          <p>C++ performance cores wrapped in Python product layers, real-time streaming pipelines, and live deployed dashboards — not notebooks that only run on my laptop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">02</span><h2>Featured work</h2></div>
+      <p class="sec-sub reveal">Three end-to-end projects. Two are live and interactive — click through and try them.</p>
+
+      <div class="projects">
+
+        <!-- Project 1 -->
+        <div class="card reveal">
+          <div class="card-top">
+            <div>
+              <h3>News-Sentiment Trading Signal</h3>
+              <div class="sub">Stocks.io · Python · DuckDB · scikit-learn · Streamlit</div>
+            </div>
+            <span class="status live">● LIVE DEMO</span>
+          </div>
+          <p class="desc">
+            A financial-news sentiment signal for US equities, evaluated with a <em>correct</em> backtest —
+            no look-ahead bias, 5bps transaction costs, benchmarked against buy-and-hold. The headline result is an
+            honest one: the signal is contemporaneously real but has ~zero next-day predictive edge, exactly what
+            market efficiency predicts. A walk-forward volatility model then shows price history subsumes the news.
+          </p>
+          <div class="metrics">
+            <div class="metric"><div class="v pos">+0.124</div><div class="k">corr(sentiment, same-day return)</div></div>
+            <div class="metric"><div class="v neu">−0.007</div><div class="k">corr with next-day return</div></div>
+            <div class="metric"><div class="v pos">R² 0.040</div><div class="k">vol model beats 0.027 baseline</div></div>
+            <div class="metric"><div class="v neu">8 / 8</div><div class="k">tests pass (incl. look-ahead)</div></div>
+          </div>
+          <div class="tags">
+            <span class="tag">VADER + Loughran-McDonald</span>
+            <span class="tag">walk-forward validation</span>
+            <span class="tag">Information Coefficient</span>
+            <span class="tag">FNSPID dataset</span>
+            <span class="tag">pytest</span>
+          </div>
+          <div class="card-links">
+            <a class="demo" href="https://news-sentiment-signal-fgqhmjzyp9somwe6pe4snu.streamlit.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              Live dashboard
+            </a>
+            <a href="https://github.com/shekinahokunbo/news-sentiment-signal" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.25.8-.55v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.75.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card reveal">
+          <div class="card-top">
+            <div>
+              <h3>EdgePulse — Real-Time Forecasting &amp; Anomaly Detection</h3>
+              <div class="sub">C++ · Python (ctypes) · Streamlit · FastAPI</div>
+            </div>
+            <span class="status live">● LIVE DEMO</span>
+          </div>
+          <p class="desc">
+            A stream-agnostic monitoring pipeline that ingests a live signal, forecasts its next value, and flags
+            anomalies in real time. The forecasting core is written in <em>C++</em> and called from Python via
+            <em>ctypes</em> (with a pure-Python fallback), anomalies use a robust median/MAD z-score that resists
+            outliers, and the hosted demo plugs into a live cryptocurrency feed — updating every second with no page reloads.
+          </p>
+          <div class="metrics">
+            <div class="metric"><div class="v pos">~2 µs</div><div class="k">per prediction (C++ core)</div></div>
+            <div class="metric"><div class="v pos">~508K/s</div><div class="k">forecast throughput</div></div>
+            <div class="metric"><div class="v neu">1 s</div><div class="k">live streaming cadence</div></div>
+            <div class="metric"><div class="v neu">MAD</div><div class="k">robust anomaly z-score</div></div>
+          </div>
+          <div class="tags">
+            <span class="tag">C++ / ctypes FFI</span>
+            <span class="tag">EWMA + trend forecaster</span>
+            <span class="tag">st.fragment streaming</span>
+            <span class="tag">live Coinbase feed</span>
+            <span class="tag">single-app deploy</span>
+          </div>
+          <div class="card-links">
+            <a class="demo" href="https://edgepulse-cfrfy9viwrhandeg5ztqdk.streamlit.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              Live demo
+            </a>
+            <a href="https://github.com/shekinahokunbo/edgepulse" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.25.8-.55v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.75.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card reveal">
+          <div class="card-top">
+            <div>
+              <h3>MarketLab — Vectorized Backtesting Engine</h3>
+              <div class="sub">Python · pandas · NumPy</div>
+            </div>
+            <span class="status repo">◆ OPEN SOURCE</span>
+          </div>
+          <p class="desc">
+            A lightweight equity backtesting engine built on fully vectorized pandas/NumPy pipelines — designed to run
+            roughly an order of magnitude faster than naive Python loops. Plug in a strategy (moving-average crossover,
+            momentum) and get P&amp;L, max drawdown, and Sharpe, plus equity and drawdown charts. A clean API keeps
+            adding new strategies simple.
+          </p>
+          <div class="metrics">
+            <div class="metric"><div class="v pos">~10×</div><div class="k">faster than naive loops</div></div>
+            <div class="metric"><div class="v neu">Sharpe</div><div class="k">+ max drawdown, P&amp;L</div></div>
+            <div class="metric"><div class="v neu">pluggable</div><div class="k">strategy interface</div></div>
+          </div>
+          <div class="tags">
+            <span class="tag">vectorized pandas/NumPy</span>
+            <span class="tag">MA crossover · momentum</span>
+            <span class="tag">equity/drawdown charts</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/shekinahokunbo/market-lab" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.25.8-.55v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.75.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap reveal">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Skills &amp; tooling</h2></div>
+      <p class="sec-sub">The stack I reach for across quantitative research, ML, and systems work.</p>
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h4>Languages</h4>
+          <ul>
+            <li>Python</li>
+            <li>C++</li>
+            <li>SQL</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Quant / ML</h4>
+          <ul>
+            <li>pandas · NumPy</li>
+            <li>scikit-learn</li>
+            <li>Backtesting &amp; risk metrics</li>
+            <li>NLP / sentiment (VADER, LM)</li>
+            <li>Walk-forward validation</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Systems / Data</h4>
+          <ul>
+            <li>ctypes / C++ FFI</li>
+            <li>DuckDB · Parquet</li>
+            <li>FastAPI</li>
+            <li>Real-time streaming</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Tooling</h4>
+          <ul>
+            <li>Git / GitHub</li>
+            <li>pytest</li>
+            <li>Streamlit</li>
+            <li>Reproducible envs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap reveal">
+      <div style="display:flex;justify-content:center;"><div class="sec-head"><span class="sec-num">04</span><h2>Let's talk</h2></div></div>
+      <p>I'm looking for Summer 2027 internships in quantitative research, machine learning, and software engineering. The fastest way to reach me is email — I read everything.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:so56@rice.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          so56@rice.edu
+        </a>
+        <a class="btn" href="https://github.com/shekinahokunbo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.25.8-.55v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.75.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+          github.com/shekinahokunbo
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/shekinahokunbo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Shekinah Okunbo</span>
+      <span class="mono">Built from scratch · hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
