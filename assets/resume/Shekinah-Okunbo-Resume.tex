@@ -1,0 +1,165 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Compact, readable one-page layout
+\addtolength{\oddsidemargin}{-0.62in}
+\addtolength{\evensidemargin}{-0.62in}
+\addtolength{\textwidth}{1.24in}
+\addtolength{\topmargin}{-0.50in}
+\addtolength{\textheight}{1.34in}
+\setlength{\footskip}{5pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}
+  {\vspace{-6pt}\scshape\raggedright\large}
+  {}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+%------------------------- Commands -------------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{#1\vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+  \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small #3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeProjectHeading}[3]{
+  \item
+  \begin{tabular*}{0.98\textwidth}{l@{\extracolsep{\fill}}r}
+    \small\textbf{#1} $|$ \emph{#2} & \small\href{#3}{\underline{Demo}} \\
+  \end{tabular*}\vspace{-8pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.14in,label={},itemsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.20in,itemsep=0pt,topsep=2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%============================================================
+\begin{document}
+
+%-------------------------- Header --------------------------
+\begin{center}
+  \textbf{\Huge \scshape Shekinah Okunbo} \\ \vspace{1pt}
+  \small Houston, TX $|$ +1 (786) 979-6483 $|$
+  \href{mailto:so56@rice.edu}{\underline{so56@rice.edu}} $|$
+  \href{https://linkedin.com/in/shekinah-okunbo}{\underline{LinkedIn}} $|$
+  \href{https://github.com/shekinahokunbo}{\underline{GitHub}} $|$
+  \href{https://shekinahokunbo.github.io}{\underline{Portfolio}}
+\end{center}\vspace{-7pt}
+
+%------------------------- Education ------------------------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Rice University}{Expected Graduation: May 2029}
+    {B.S. Electrical \& Computer Engineering, AI Specialization; Minor in Data Science}{Houston, TX}
+    \resumeItemListStart
+      \resumeItem{\textbf{Relevant Coursework:} Data Structures \& Algorithms, Computer Architecture, Embedded Systems, Digital Logic, Python Programming, Signals \& Systems, NVIDIA Autonomous Robotics Course}
+      \resumeItem{\textbf{Honors:} Rice Datathon 2026 --- 1st Place (Underclassmen); NMC National Physics Olympiad 2025 --- 4th nationally}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%------------------------- Experience -----------------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {AI Agent Engineering Extern}{Jul 2026 -- Present}
+    {Wayfair}{Remote}
+    \resumeItemListStart
+      \resumeItem{Building multi-step AI workflows with n8n and Google Gemini to ingest product, blog, and social data, extract structured trend signals from unstructured text, and publish results to a live dashboard.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Machine Learning Researcher}{May 2026 -- Jul 2026}
+    {Rice Summer Undergraduate Research Fellowship}{Houston, TX}
+    \resumeItemListStart
+      \resumeItem{Trained and evaluated five YOLO26 object-detection variants, building a reproducible pipeline for preprocessing, augmentation, training, and accuracy benchmarking on COCO and a custom desk-object dataset.}
+      \resumeItem{Quantized and deployed GPU-trained models to an iPhone 16 Pro; profiled accuracy, latency, FPS, and model size across lighting and motion conditions to identify the best mobile speed--accuracy tradeoff.}
+      \resumeItem{Achieved \textbf{81\% mAP@50} and measured \textbf{30.08 FPS / 15.25 ms} for the fastest model versus 16.78 FPS / 48.53 ms for the largest, documenting reproducible deployment results.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Software Developer}{Sep 2025 -- Present}
+    {RiceApps}{Rice University}
+    \resumeItemListStart
+      \resumeItem{Designed a normalized PostgreSQL/Supabase schema and SQL migrations; built diagnostic quiz flows across a Next.js/TypeScript frontend, middleware routing, and backend logging for a nonprofit education platform.}
+      \resumeItem{Developed fully typed TypeScript modules and shipped production features through code review and a Git workflow on a $\sim$70-person cross-functional organization.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-------------------------- Projects ------------------------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {WarpServe --- GPU Inference Microservice}
+    {CUDA, C++, Python, Docker, Kubernetes}
+    {https://github.com/shekinahokunbo/warpserve}
+    \resumeItemListStart
+      \resumeItem{Hand-wrote a CUDA preprocessing kernel fusing bilinear resize, normalization, and HWC$\rightarrow$CHW into one pass --- \textbf{127$\times$ faster} than a scalar CPU reference on a T4, bit-identical; end-to-end only \textbf{1.7$\times$}, isolating PCIe transfer as the bottleneck.}
+      \resumeItem{Packaged the FastAPI service as a multi-stage Docker image, keeping the CUDA toolkit out of the shipped artifact: \textbf{11.4 GB build stage $\rightarrow$ 1.52 GB image} (7.5$\times$ smaller), running non-root.}
+      \resumeItem{Deployed to Kubernetes with liveness/readiness probes, resource requests, and a horizontal pod autoscaler; scaled \textbf{2$\rightarrow$8 pods to 88 req/s at 83\% scaling efficiency} (p50 907$\rightarrow$201 ms) after finding \texttt{kubectl port-forward}, not the pods, capped throughput.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {EdgePulse --- Real-Time Forecasting \& Anomaly Detection}
+    {C++, Python, ctypes, FastAPI}
+    {https://github.com/shekinahokunbo/edgepulse}
+    \resumeItemListStart
+      \resumeItem{Built an ingest $\rightarrow$ forecast $\rightarrow$ detect $\rightarrow$ alert pipeline with a C++ inference core exposed through ctypes, cutting latency $\sim$31\% versus Python at \textbf{$\sim$508K predictions/sec ($\sim$2 $\mu$s/prediction)}; added median/MAD detection over ring-buffered residuals.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {MarketLab --- Vectorized Compute Engine}
+    {Python, pandas, NumPy, pytest}
+    {https://github.com/shekinahokunbo/market-lab}
+    \resumeItemListStart
+      \resumeItem{Replaced a scalar loop with vectorized array operations, achieving \textbf{$\sim$30$\times$ speedup} (1 ms vs. 30 ms over 50,000 steps) with numerical equivalence verified by pytest.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%--------------------------- Skills -------------------------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.14in,label={},itemsep=0pt,topsep=2pt]
+  \small\item{
+    \textbf{Languages:} Python, C++, C, CUDA, TypeScript, JavaScript, SQL, MATLAB, Bash, HTML/CSS \\
+    \textbf{Systems/Tools:} Git/GitHub, Linux/Unix, Docker, Kubernetes, FastAPI, REST APIs, PostgreSQL, Supabase, n8n, AWS, Azure, Google Colab, streamlit, Claude Code \\
+    \textbf{ML/Data:} PyTorch, NumPy, pandas, scikit-learn, OpenCV, Ultralytics YOLO, ONNX, TensorRT, pytest, ctypes
+  }
+\end{itemize}\vspace{-8pt}
+
+%-------------------------- Programs ------------------------
+\section{Programs \& Leadership}
+\begin{itemize}[leftmargin=0.14in,label={},topsep=2pt]
+  \small\item{NVIDIA Summer Bridge (2026) $|$ Jane Street FOCUS (2026) $|$ Goldman Sachs Possibilities Summit $|$ ColorStack Fellow $|$ NSBE Region V $|$ Rice IEEE $|$ Codepath AI110 \& TIP 101}
+\end{itemize}
+
+\end{document}
