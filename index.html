@@ -709,8 +709,8 @@
           <div class="tl-date">May — Jul 2026<br>Houston, TX</div>
           <div>
             <div class="tl-role"><h3>Machine Learning Researcher</h3><span class="tl-org">Rice SURF · Rice ECE (advised by Dr. Vivek Boominathan, Ken Kennedy Institute)</span></div>
-            <p class="tl-desc">Benchmarked five YOLO26 variants for real-time mobile inference, identifying the best speed-accuracy tradeoff for on-device deployment, and built a full desktop-to-mobile pipeline — PyTorch → ONNX → TensorRT/INT8 — running on real iPhone 16 Pro hardware. A controlled dataset-scale study isolated training-data scale as the dominant driver of model reliability.</p>
-            <div class="tl-stack"><span>PyTorch</span><span>YOLO26</span><span>ONNX</span><span>TensorRT / INT8</span></div>
+            <p class="tl-desc">Benchmarked five YOLO26 variants for real-time mobile inference, identifying the best speed-accuracy tradeoff for on-device deployment, and built a full desktop-to-mobile pipeline — PyTorch → ONNX — running on real iPhone 16 Pro hardware. A controlled dataset-scale study isolated training-data scale as the dominant driver of model reliability.</p>
+            <div class="tl-stack"><span>PyTorch</span><span>YOLO26</span><span>ONNX</span></div>
           </div>
         </div>
 
@@ -736,9 +736,9 @@
           <div class="tl-date">Aug 2023 — Aug 2024<br>Abuja, Nigeria</div>
           <div>
             <div class="tl-role"><h3>Founder</h3><span class="tl-org">Robodoc</span></div>
-            <p class="tl-desc">Founded an AI-powered healthcare-access concept helping people in under-resourced communities find nearby hospitals and get symptom-based guidance — rapidly prototyped in Flutter/Firebase to validate the idea before committing to a full custom build.</p>
+            <p class="tl-desc">Founded an AI-powered healthcare-access app helping people in under-resourced communities find nearby hospitals and get symptom-based guidance — built in Flutter/Firebase and shipped as an Android app to the Google Play Store (no longer published).</p>
             <div class="tl-stack"><span>Flutter</span><span>Firebase</span><span>Product design</span></div>
-            <a class="tl-link" href="https://github.com/shekinahokunbo/robotic-apk-android-app-v2" target="_blank" rel="noopener">View prototype repo ↗</a>
+            <a class="tl-link" href="https://github.com/shekinahokunbo/robotic-apk-android-app-v2" target="_blank" rel="noopener">View source repo ↗</a>
           </div>
         </div>
       </div>
@@ -768,8 +768,8 @@
         <div class="card reveal" data-tags="systems">
           <img class="card-thumb" src="assets/images/projects/warpserve.jpg" alt="NVIDIA CUDA/Docker/Kubernetes software stack diagram">
           <div class="card-top"><h3>WarpServe</h3><span class="card-status">GPU microservice</span></div>
-          <p class="card-desc">A GPU inference microservice with a hand-written CUDA kernel that fuses bilinear resize, normalization, and HWC→CHW layout conversion into a single pass — bit-identical output, 127× faster than a scalar CPU reference on a T4. Packaged as a multi-stage Docker image that keeps the CUDA toolkit out of the shipped artifact, then deployed to Kubernetes with liveness/readiness probes and a horizontal pod autoscaler.</p>
-          <div class="card-metric">127× kernel speedup · 11.4GB → 1.52GB image · 2→8 pods to 88 req/s at 83% efficiency</div>
+          <p class="card-desc">A GPU inference microservice with a hand-written CUDA kernel that fuses bilinear resize, normalization, and HWC→CHW layout conversion into a single pass — bit-identical output, 127× faster than a scalar CPU reference on an NVIDIA T4. Packaged as a multi-stage Docker image that keeps the CUDA toolkit out of the shipped artifact, then deployed to Kubernetes with liveness/readiness probes and a horizontal pod autoscaler.</p>
+          <div class="card-metric">127× kernel speedup vs. scalar CPU on an NVIDIA T4 · 11.4 GB → 1.52 GB Docker image · 2→8 pods to 88 req/s at 83% efficiency</div>
           <div class="card-stack"><span>CUDA</span><span>C++</span><span>Python</span><span>Docker</span><span>Kubernetes</span></div>
           <div class="card-links"><a href="https://github.com/shekinahokunbo/warpserve" target="_blank" rel="noopener">Source ↗</a></div>
         </div>
@@ -782,7 +782,7 @@
             <img class="slide" src="assets/images/projects/adaptive-learning-student-quiz.jpg" alt="Student-facing diagnostic quiz question">
           </div>
           <div class="card-top"><h3>Adaptive Learning Platform</h3><span class="card-status">Live · nonprofit</span></div>
-          <p class="card-desc">AI-powered adaptive learning platform, built with a RiceApps team for Eight Million Stories, a nonprofit empowering at-promise youth ages 16–24. As backend/data developer: normalized schema, SQL migrations, a 200+ question bank, and the diagnostic quiz flow that personalizes each student's path — plus Gemini-driven adaptive routing via the Mastra agent framework.</p>
+          <p class="card-desc">AI-powered adaptive learning platform, built with a RiceApps team for Eight Million Stories, a nonprofit empowering at-promise youth ages 16–24. As backend/data developer: normalized schema, SQL migrations, a 100+ question bank, and the diagnostic quiz flow that personalizes each student's path — plus Gemini-driven adaptive routing via the Mastra agent framework.</p>
           <div class="card-metric">197+ commits · ~70-person team</div>
           <div class="card-stack"><span>TypeScript</span><span>Next.js</span><span>Supabase</span><span>Gemini</span></div>
           <div class="card-links"><a href="https://github.com/rice-apps/adaptive-learning" target="_blank" rel="noopener">Source ↗</a></div>
@@ -870,7 +870,7 @@
         </div>
         <div class="bom-row">
           <div class="bom-label">Data / Cloud</div>
-          <div class="bom-value">PostgreSQL <span class="sep">·</span> Supabase <span class="sep">·</span> DuckDB <span class="sep">·</span> AWS <span class="sep">·</span> Azure <span class="sep">·</span> REST APIs <span class="sep">·</span> ONNX <span class="sep">·</span> TensorRT / INT8 quantization</div>
+          <div class="bom-value">PostgreSQL <span class="sep">·</span> Supabase <span class="sep">·</span> DuckDB <span class="sep">·</span> AWS <span class="sep">·</span> Azure <span class="sep">·</span> REST APIs <span class="sep">·</span> ONNX</div>
         </div>
         <div class="bom-row">
           <div class="bom-label">Dev Tools</div>
