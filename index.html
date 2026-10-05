@@ -653,7 +653,7 @@
   <div class="readout">
     <div class="readout-inner">
       <div class="readout-item"><div class="readout-value">30.08 FPS</div><div class="readout-label">On-device YOLO26n · iPhone 16 Pro</div></div>
-      <div class="readout-item"><div class="readout-value">81% mAP</div><div class="readout-label">Custom PyTorch detector, tuned</div></div>
+      <div class="readout-item"><div class="readout-value">3.2×</div><div class="readout-label">Lower latency, smallest vs. largest YOLO26 on iPhone 16 Pro</div></div>
       <div class="readout-item"><div class="readout-value">508K /s</div><div class="readout-label">Predictions/sec, C++ inference core</div></div>
       <div class="readout-item"><div class="readout-value">ρ = 0.12</div><div class="readout-label">Sentiment signal, 49.5K headlines</div></div>
       <div class="readout-item"><div class="readout-value">30×</div><div class="readout-label">Faster vectorized backtest engine</div></div>
@@ -767,7 +767,7 @@
 
         <div class="card reveal" data-tags="systems">
           <img class="card-thumb" src="assets/images/projects/warpserve.jpg" alt="NVIDIA CUDA/Docker/Kubernetes software stack diagram">
-          <div class="card-top"><h3>WarpServe</h3><span class="card-status">GPU microservice</span></div>
+          <div class="card-top"><h3>WarpServe</h3><span class="card-status">GPU preprocessing</span></div>
           <p class="card-desc">A GPU-accelerated vision preprocessing service with a hand-written CUDA kernel that fuses bilinear resize, normalization, and HWC→CHW layout conversion into a single pass — bit-identical output, 127× faster than a scalar CPU reference on an NVIDIA T4. Packaged as a multi-stage Docker image that keeps the CUDA toolkit out of the shipped artifact, then deployed to a local Kubernetes cluster (CPU build) with liveness/readiness probes and a horizontal pod autoscaler.</p>
           <div class="card-metric">127× kernel speedup vs. scalar CPU on an NVIDIA T4 · 11.4 GB → 1.52 GB Docker image · 2→8 pods to 88 req/s at 83% efficiency (CPU build)</div>
           <div class="card-stack"><span>CUDA</span><span>C++</span><span>Python</span><span>Docker</span><span>Kubernetes</span></div>
